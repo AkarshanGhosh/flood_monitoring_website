@@ -3,20 +3,24 @@
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html lang="en" class="font-[Poppins]">
 {% load static %}
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon/favicon-16x16.png' %}">
-        <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon/favicon-32x32.png' %}">
-        <link rel="icon" type="image/png" sizes="96x96" href="{% static 'favicon/favicon-96x96.png' %}">    
-        <link rel="stylesheet" href="{% static 'css/signup.css' %}">
-    </head>
-    <body>
-        {% for message in messages %}
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Sign Up</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon/favicon-16x16.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="96x96" href="{% static 'favicon/favicon-96x96.png' %}">
+    <link rel="stylesheet" href="{% static 'css/signup.css' %}">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+</head>
+<body class="bg-gradient-to-t from-[#fbc2eb] to-[#a6c1ee] h-screen flex flex-col">
+
+    {% for message in messages %}
     <div class='alert alert-{{ message.tags }} alert-dismissible fade show' role="alert">
         <strong>Message:</strong> {{ message }}
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -24,43 +28,98 @@
         </button>
     </div>
     {% endfor %}
-
     
-        <h3>Sign Up</h3>
-    <form action='/signup' method='post'>
-        {% csrf_token %}
-        <label for=''>Username</label>
-        <input type='text' id='username' name='username' placeholder='Username(only letters, numbers)' required>
+    <header class="bg-white fixed top-4 left-4 right-4 z-50 shadow-md rounded-t-3xl rounded-b-3xl py-2">
+        <nav class="flex justify-between items-center w-full mx-auto">
+            <div>
+                <a href="{% url 'home' %}"><img class="w-32 cursor-pointer" src="{% static 'images/logo.png' %}" alt="Logo"></a>
+            </div>
+            <div class="nav-links duration-500 md:static absolute bg-white md:min-h-fit min-h-[60vh] left-0 top-[-900%] md:w-auto w-full flex items-center px-5">
+                <ul class="flex md:flex-row flex-col md:items-center md:gap-[4vw] gap-6">
+                    <li>
+                        <a class="hover:text-gray-500" href="{% url 'home' %}">Home</a>
+                    </li>
+                    <li>
+                        <a class="hover:text-gray-500" href="/signin">Sign-In</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="flex items-center gap-4">
+                <ion-icon onclick="onToggleMenu(this)" name="menu" class="text-3xl cursor-pointer md:hidden"></ion-icon>
+            </div>
+        </nav>
+    </header>
+<br>
+<br>
+<br>
 
-        <br>
-        <label for=''>First Name</label>
-        <input type='text' id='fname' name='fname' placeholder='Enter your first name' required>
+    <section class="flex-1 flex items-center justify-center">
+        <div class="bg-white shadow-md rounded-3xl p-8 max-w-lg w-full">
+            <h3 class="text-center text-3xl font-semibold mb-6">Sign Up</h3>
+            <form action='/signup' method='post' class="flex flex-col gap-4">
+                {% csrf_token %}
+                <label for='username' class="sr-only">Username</label>
+                <input type='text' id='username' name='username' placeholder='Username (only letters, numbers)' required class="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500">
 
-        <br>
-        <label for=''>Last Name</label>
-        <input type='text' id='lname' name='lname' placeholder='Enter your Last name' required>
+                <label for='fname' class="sr-only">First Name</label>
+                <input type='text' id='fname' name='fname' placeholder='Enter your first name' required class="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500">
 
+                <label for='lname' class="sr-only">Last Name</label>
+                <input type='text' id='lname' name='lname' placeholder='Enter your last name' required class="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500">
 
-        <br>
-        <label for=''>Email ID</label>
-        <input type='email' id='email' name='email' placeholder='Enter your Email' required>
+                <label for='email' class="sr-only">Email ID</label>
+                <input type='email' id='email' name='email' placeholder='Enter your Email' required class="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500">
 
+                <label for='pass1' class="sr-only">Password</label>
+                <input type='password' id='pass1' name='pass1' placeholder='Password (only letters, numbers)' required class="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500">
 
-        <br>
-        <label for=''>Password</label>
-        <input type='password' id='pass1' name='pass1' placeholder='Password(only letters, numbers)' required>
+                <label for='pass2' class="sr-only">Confirm Password</label>
+                <input type='password' id='pass2' name='pass2' placeholder='Confirm your Password' required class="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500">
 
+                <button type='submit' class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-lg text-center mx-auto mt-4 w-full">Sign Up</button>
+            </form>
+        </div>
+    </section>
+    <br>
 
-        <br>
-        <label for=''>Confirm Password</label>
-        <input type='password' id='pass2' name='pass2' placeholder='Confirm your Password' required>
-
-        <br>
-        
-        <button type='submit'>Sign Up</button>
+    <script>
+        const navLinks = document.querySelector('.nav-links')
+        function onToggleMenu(e){
+            e.name = e.name === 'menu' ? 'close' : 'menu'
+            navLinks.classList.toggle('top-[9%]')
+        }
+    </script>
     
-    </form>
-        
-        
-        <script src="" async defer></script>
-    </body>
+    <script src="" async defer></script>
+
+       <!-- Footer -->
+       <footer class="bg-gray-800 text-white py-8 mt-auto">
+        <div class="container mx-auto flex items-center justify-between px-4">
+            <div>
+                <img class="w-40" src="static/images/logo.png" alt="...">
+            </div>
+            <div class="text-center flex-1">
+                <p class="text-gray-400">&copy; 2024 Akarshan. All rights reserved.</p>
+                <p class="text-gray-400">For more information, please contact 
+                    <span class="flex items-center justify-center">
+                        <ion-icon name="call-outline" class="text-gray-400 mr-2"></ion-icon> 
+                        <span>(+91) 123-456-7890</span>
+                    </span>
+                </p>
+            </div>
+            <div class="flex gap-6">
+                <a href="#" class="text-gray-400 hover:text-white"><ion-icon name="logo-facebook"></ion-icon></a>
+                <a href="#" class="text-gray-400 hover:text-white"><ion-icon name="logo-twitter"></ion-icon></a>
+                <a href="#" class="text-gray-400 hover:text-white"><ion-icon name="logo-instagram"></ion-icon></a>
+            </div>
+        </div>
+    </footer>
+
+    <style>
+        footer {
+            border-top-left-radius: 2rem;
+            border-top-right-radius: 2rem;
+        }
+    </style>
+</body>
+</html>
