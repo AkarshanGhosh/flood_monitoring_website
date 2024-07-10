@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alert - Flood Detection</title>
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon/favicon-16x16.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="96x96" href="{% static 'favicon/favicon-96x96.png' %}">
+    <link rel="stylesheet" href="{% static 'css/alert.css' %}">
+
+    <script>
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Backspace') {
+                event.preventDefault();
+                window.location.href = "{% url 'signin' %}";
+            }
+        });
+    </script>
+</head>
+<body>
+    <header class="header">
+        <h1>Logo/Name</h1>
+
+    </header>
+
+    <div class="alert-content">
+        <div class="image-container">
+            <img src="{% static 'images/download.png' %}" alt="Alert Image">
+        </div>
+        <div class="text-container">
+            <p>No emergency yet</p>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2024 Your Company. All rights reserved.</p>
+    </footer>
+</body>
+</html>

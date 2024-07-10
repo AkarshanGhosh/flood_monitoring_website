@@ -1,0 +1,131 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flood Monitoring</title>
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon/favicon-16x16.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="96x96" href="{% static 'favicon/favicon-96x96.png' %}">
+    <!-- Include Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Include fetchData.js -->
+    <script src="{% static 'javascript/script.js' %}" defer></script>
+    <script src="{% static 'javascript/fetch.js' %}" defer></script>
+    <style>
+        /* Custom CSS for table scrolling */
+        .scrollable-table {
+            max-height: 400px; /* Adjust height as needed */
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+
+<header class="header bg-green-500 text-white py-4 px-6 flex justify-between items-center">
+    <h1 class="text-xl font-bold">Flood Monitoring</h1>
+</header>
+
+<!-- Navbar -->
+<nav class="bg-gray-800 text-white py-4 fixed w-full top-0 z-10">
+    <div class="container mx-auto flex justify-between items-center">
+        <h2 class="text-lg font-semibold mb-4 px-5">Flood-Monitoring</h2>
+        <ul class="flex space-x-6 ml-0">
+            <li>
+                <a href="#area1" class="hover:text-gray-300 px-5">Area 1</a>
+            </li>
+            <li>
+                <a href="#area2" class="hover:text-gray-300 px-5">Area 2</a>
+            </li>
+            <li>
+                <a href="#area3" class="hover:text-gray-300 px-5">Area 3</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Main Content -->
+<div class="container mx-auto px-4 py-8">
+    <!-- Area 1 -->
+    <section id="area1" class="mb-8">
+        <h2 class="text-lg font-semibold mb-4">Area 1</h2>
+        <!-- Table for Area 1 -->
+        <div class="scrollable-table">
+            <table id="area1-table" class="table-auto w-full bg-white border border-gray-300 mb-4">
+                <thead>
+                    <tr class="bg-gray-200">
+                        <th class="border border-gray-800 px-4 py-2">Date</th>
+                        <th class="border border-gray-800 px-4 py-2">Entry ID</th>
+                        <th class="border border-gray-800 px-4 py-2">Field (cm)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Data will be populated here by JavaScript -->
+                </tbody>
+            </table>
+        </div>
+        <!-- Placeholder graph for Area 1 -->
+        <div class="bg-gray-300 h-40 mb-8"></div>
+    </section>
+</div>
+    <!-- Area 2 -->
+    <section id="area2" class="mb-8">
+        <h2 class="text-lg font-semibold mb-4">Area 2</h2>
+        <!-- Table for Area 2 -->
+        <div class="scrollable-table">
+            <table id="area2-table" class="table-auto w-full bg-white border border-gray-300 mb-4">
+                <thead>
+                    <tr class="bg-gray-200">
+                        <th class="border border-gray-800 px-4 py-2">Date</th>
+                        <th class="border border-gray-800 px-4 py-2">Entry ID</th>
+                        <th class="border border-gray-800 px-4 py-2">Field (cm)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Data will be populated here by JavaScript -->
+                </tbody>
+            </table>
+        </div>
+        <!-- Placeholder graph for Area 2 -->
+        <div class="bg-gray-300 h-40 mb-8"></div>
+    </section>
+    <!-- Area 3 -->
+    <section id="area3">
+        <h2 class="text-lg font-semibold mb-4">Area 3</h2>
+        <!-- Placeholder table for Area 3 -->
+        <table class="table-auto w-full bg-white border border-gray-300 mb-4">
+            <thead>
+                <tr class="bg-gray-200">
+                    <th class="border border-gray-800 px-4 py-2">Date</th>
+                    <th class="border border-gray-800 px-4 py-2">Entry ID</th>
+                    <th class="border border-gray-800 px-4 py-2">Field (cm)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Placeholder rows -->
+                <tr>
+                    <td class="border border-gray-800 px-4 py-2">-</td>
+                    <td class="border border-gray-800 px-4 py-2">-</td>
+                    <td class="border border-gray-800 px-4 py-2">-</td>
+                </tr>
+                <tr>
+                    <td class="border border-gray-800 px-4 py-2">-</td>
+                    <td class="border border-gray-800 px-4 py-2">-</td>
+                    <td class="border border-gray-800 px-4 py-2">-</td>
+                </tr>
+                <tr>
+                    <td class="border border-gray-800 px-4 py-2">-</td>
+                    <td class="border border-gray-800 px-4 py-2">-</td>
+                    <td class="border border-gray-800 px-4 py-2">-</td>
+                </tr>
+                <!-- Add more rows as needed -->
+            </tbody>
+        </table>
+        <!-- Placeholder graph for Area 3 -->
+        <div class="bg-gray-300 h-40 mb-8"></div>
+    </section>
+</div>
+
+</body>
+</html>

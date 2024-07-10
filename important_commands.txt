@@ -1,0 +1,17 @@
+cd desktop
+cd Flood-detection
+enviroment\scripts\activate
+django-admin startproject login
+python manage.py startapp authentication
+python manage.py runserver
+python manage.py makemigrations
+python manage.py migrate
+python manage.py collectstatic
+python manage.py createsuperuser
+python manage.py fetch_thingspeak_data
+
+
+Admin credentials 
+user akarshan
+
+pass akarshanghosh 
