@@ -1,0 +1,118 @@
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+}
+
+.header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.header h1 {
+    font-size: 24px;
+    margin: 0;
+}
+
+.nav-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    padding-right: 50px;
+}
+
+.nav-links li {
+    margin-left: 20px;
+    position: relative;
+    padding-left: 30px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    position: relative;
+}
+
+.nav-links a:hover {
+    text-decoration: underline;
+}
+
+
+
+
+
+/* Table styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #f2f2f2; /* Light gray background */
+    border: 1px solid #000; /* Black border */
+}
+
+th, td {
+    border: 1px solid #000; /* Black border */
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #808080; /* Dark gray background for headers */
+    color: white;
+    font-weight: bold;
+}
+
+tr:hover {
+    background-color: #f1f1f1; /* Light gray background on hover */
+}
+
+/* Footer styling */
+.footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Media queries for responsive design */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: #4CAF50; /* Same background as the header */
+        position: absolute;
+        top: 60px; /* Adjust based on your header height */
+        left: 0;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links li {
+        margin: 10px 0;
+        text-align: center;
+    }
+
+    .dropdown-content {
+        position: relative; /* Adjust to ensure dropdowns are visible on mobile */
+        top: auto;
+        left: auto;
+        box-shadow: none;
+    }
+}

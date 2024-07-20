@@ -1,0 +1,74 @@
+
+body, h1, h2, h3, p {
+    margin: 0;
+    padding: 0;
+}
+
+/* Global body styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0; /* Light gray background for the body */
+}
+
+/* Header styling */
+.header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed; 
+    width: 100%; 
+    top: 0; 
+    z-index: 1000; 
+}
+
+.header h1 {
+    position: relative;
+    font-size: 30px;
+    top: 10px; /* Adjust the top position to move the h1 down */
+}
+
+/* Main content area */
+.alert-content {
+    position: relative; /* To make sure content area relative for absolute positioning */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh; /* Adjust as needed */
+    padding: 20px;
+}
+
+.image-container img {
+    width: 40px; /* Adjust width as needed */
+    height: auto; /* Maintain aspect ratio */
+    display: block;
+    margin: 0 auto;
+    opacity: 0.5; 
+}
+.image-container img {
+    width: 50%; /* Adjust image size */
+    display: block;
+    margin: 0 auto;
+    opacity: 0.5; 
+}
+
+.text-container {
+    z-index: 1; 
+    font-size: 30px;
+    padding: 10px;
+    text-align: center;
+    opacity: 0.4; 
+}
+
+/* Footer styling */
+.footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
