@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure--ln@5s#oie1%_lcv&jww37!)27_0qc^tlqj222we(1-stl_1rb
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = [".vercel.app",".now.sh"]
 
 APPEND_SLASH = False 
 
@@ -138,3 +138,7 @@ GOOGLE_CLIENT_SECRET = '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'
 
 # Login URL
 LOGIN_URL = '/login/'
+
+import os
+STATICFILES_DIRS = os.path.join(BASE_DIR,'static'),
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
