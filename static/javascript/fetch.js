@@ -1,12 +1,11 @@
-// fetchDataArea2.js
-
 document.addEventListener("DOMContentLoaded", function() {
     const THINGSPEAK_CHANNEL_ID_AREA2 = '2399528';
     const THINGSPEAK_API_KEY_AREA2 = 'UTP787AIXRG4RZUJ';
-
     const THINGSPEAK_URL_AREA2 = `https://api.thingspeak.com/channels/${THINGSPEAK_CHANNEL_ID_AREA2}/feeds.json?api_key=${THINGSPEAK_API_KEY_AREA2}`;
 
     const tableArea2 = document.getElementById('area2-table');
+    const chartCtx = document.getElementById('area2-chart').getContext('2d');
+    let area2Chart;
 
     function fetchData(url) {
         return fetch(url)
@@ -16,9 +15,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 }
                 return response.json();
             })
-            .then(data => {
-                return data.feeds; // Directly return feeds array
-            })
+            .then(data => data.feeds || [])
             .catch(error => {
                 console.error('Error fetching data:', error);
                 return [];
@@ -29,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function() {
         return data.map(entry => ({
             date: entry.created_at || '',
             entry_id: entry.entry_id || '',
-            field1: entry.field1 || '',
+            field1: parseFloat(entry.field1) || 0,
         }));
     }
 
@@ -37,7 +34,6 @@ document.addEventListener("DOMContentLoaded", function() {
         const tbody = tableArea2.querySelector('tbody');
         tbody.innerHTML = ''; // Clear existing rows
 
-        // Loop through data to display newest entries first
         for (let i = data.length - 1; i >= 0; i--) {
             const entry = data[i];
             const row = document.createElement('tr');
@@ -48,26 +44,71 @@ document.addEventListener("DOMContentLoaded", function() {
             `;
             tbody.appendChild(row);
 
-            // Add a class to every 10th row for styling purposes
             if ((data.length - i) % 10 === 0 && i !== 0) {
-                row.classList.add('border-b-2', 'border-gray-300'); // Add bottom border after every 10 rows
+                row.classList.add('border-b-2', 'border-gray-300');
             }
         }
     }
 
-    function fetchDataAndPopulateTable() {
+    function updateChart(data) {
+        const labels = data.map(entry => entry.entry_id);
+        const values = data.map(entry => entry.field1);
+
+        if (area2Chart) {
+            area2Chart.data.labels = labels;
+            area2Chart.data.datasets[0].data = values;
+            area2Chart.update(); // Update chart with new data
+        } else {
+            area2Chart = new Chart(chartCtx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Field (cm)',
+                        data: values,
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                        fill: false,
+                        tension: 0.1
+                    }]
+                },
+                options: {
+                    scales: {
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Entry ID'
+                            }
+                        },
+                        y: {
+                            beginAtZero: true,
+                            max: 1500,
+                            title: {
+                                display: true,
+                                text: 'Field (cm)'
+                            }
+                        }
+                    }
+                }
+            });
+        }
+    }
+
+    function fetchDataAndPopulateTableAndChart() {
         fetchData(THINGSPEAK_URL_AREA2)
             .then(data => {
                 const formattedData = formatData(data);
                 populateTable(formattedData);
+                updateChart(formattedData);
+            })
+            .catch(error => {
+                console.error('Error fetching and updating data:', error);
             });
     }
 
-    // Fetch and populate Area 2 table on page load
-    fetchDataAndPopulateTable();
+    fetchDataAndPopulateTableAndChart();
 
-    // Fetch and populate Area 2 table every 30 seconds
     setInterval(() => {
-        fetchDataAndPopulateTable();
-    }, 30000);
+        fetchDataAndPopulateTableAndChart();
+    }, 30000); // Refresh every 30 seconds
 });
