@@ -21,7 +21,9 @@
             "dest": "/static/$1"
         },
         {
-            "src": 
+            "src": "/(.*)",
+            "dest":"login/wsgi.py"
+
         }
     ]
 }
