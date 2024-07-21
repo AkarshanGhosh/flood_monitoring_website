@@ -23,7 +23,7 @@ deleting clone git
 2.rm -rf flood_monitoring_website
 
 making a clone git 
-1. git clone your GitHub link repo
+1. git clone https://github.com/AkarshanGhosh/flood_monitoring_website
 
 
 sudo apt update
@@ -34,6 +34,7 @@ Navigate to your project directory and create a virtual environment:
 
 bash
 Copy code
+ls -lrt
 cd ~/flood_monitoring_website
 python3 -m venv venv
 Step 3: Activate the virtual environment
@@ -51,4 +52,11 @@ pip install <package_name>
 
 activate server 
 
+1.pip install Django
+2.pip install oauth2_provider
+3.pip install oauth2client
+
 python manage.py runserver 0.0.0.0:8000
+
+
+main url http://16.171.19.165:8000/ 
