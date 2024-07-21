@@ -15,3 +15,40 @@ Admin credentials
 user akarshan
 
 pass akarshanghosh 
+
+for aws server 
+
+deleting clone git 
+1.cd ~
+2.rm -rf flood_monitoring_website
+
+making a clone git 
+1. git clone your GitHub link repo
+
+
+sudo apt update
+sudo apt install python3-venv python3-pip
+
+Step 2: Create a virtual environment
+Navigate to your project directory and create a virtual environment:
+
+bash
+Copy code
+cd ~/flood_monitoring_website
+python3 -m venv venv
+Step 3: Activate the virtual environment
+Activate the virtual environment you just created:
+
+bash
+Copy code
+source venv/bin/activate
+Step 4: Install the required packages within the virtual environment
+Now you can install any packages you need without affecting the system Python environment:
+
+bash
+Copy code
+pip install <package_name>
+
+activate server 
+
+python manage.py runserver 0.0.0.0:8000
