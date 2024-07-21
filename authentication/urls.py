@@ -8,8 +8,8 @@ from django.contrib.auth import views as auth_views
 urlpatterns = [
     path('admin/', admin.site.urls),  # Added this line for admin interface
     path('', views.home, name='home'),
-    path('signup/', views.signup, name='signup'),
-    path('signin/', views.signin, name='signin'),
+    path('signup', views.signup, name='signup'),
+    path('signin', views.signin, name='signin'),
     path('alert/', views.alert, name='alert'),
     path('google-auth/', views.google_auth, name='google_auth'),
     path('oauth2callback/', views.oauth2callback, name='oauth2callback'),
