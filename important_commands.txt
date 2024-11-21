@@ -59,4 +59,7 @@ activate server
 python manage.py runserver 0.0.0.0:8000
 
 
+
+https://eu-north-1.console.aws.amazon.com/ec2-instance-connect/ssh?connType=standard&instanceId=i-0e534657f2fb369d8&osUser=ubuntu&region=eu-north-1&sshPort=22#/
+
 main url http://16.171.19.165:8000/ 
